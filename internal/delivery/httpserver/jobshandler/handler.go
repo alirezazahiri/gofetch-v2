@@ -1,14 +1,20 @@
 package jobshandler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/alirezazahiri/gofetch-v2/internal/jobsservice"
+	"github.com/gin-gonic/gin"
+)
 
 type Handler struct {
+	svc *jobsservice.Service
 }
 
-func New() *Handler {
-	return &Handler{}
+func New(svc *jobsservice.Service) *Handler {
+	return &Handler{
+		svc: svc,
+	}
 }
 
 func (h *Handler) RegisterRoutes(router *gin.RouterGroup) {
-	router.GET("/check", h.Check)
+	router.POST("/check", h.Check)
 }

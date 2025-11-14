@@ -28,9 +28,12 @@ func (h *Handler) Check(c *gin.Context) {
 		return
 	}
 
-	// TODO: Implement actual job creation logic here
-	envelope.OK(c, map[string]string{
-		"message": "Check job is running ✅",
-		"status":  "accepted",
-	})
+	job, err := h.svc.Check(c.Request.Context(), &request)
+
+	if err != nil {
+		envelope.InternalServerError(c, "Failed to create job", err.Error())
+		return
+	}
+
+	envelope.Created(c, job)
 }
