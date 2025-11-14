@@ -23,10 +23,9 @@ type Job struct {
 type JobResultStatus uint8
 
 const (
-	JobResultStatusPending JobResultStatus = iota
-	JobResultStatusRunning
-	JobResultStatusCompleted
+	JobResultStatusCompleted JobResultStatus = iota
 	JobResultStatusFailed
+	JobResultStatusTimeout
 )
 
 type JobResult struct {

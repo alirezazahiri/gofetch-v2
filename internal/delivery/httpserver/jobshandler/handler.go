@@ -17,4 +17,5 @@ func New(svc *jobsservice.Service) *Handler {
 
 func (h *Handler) RegisterRoutes(router *gin.RouterGroup) {
 	router.POST("/check", h.Check)
+	router.GET("/:id", h.RetrieveJob)
 }

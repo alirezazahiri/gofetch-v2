@@ -5,7 +5,7 @@ import "time"
 type CheckRequest struct {
 	Urls        []string `json:"urls"`
 	Concurrency int      `json:"concurrency"`
-	Timeout     int      `json:"timeout"`
+	TimeoutMs   int      `json:"timeout_ms"`
 }
 
 type CheckResponse struct {
